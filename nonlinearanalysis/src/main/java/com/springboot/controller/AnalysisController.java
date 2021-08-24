@@ -13,7 +13,7 @@ public class AnalysisController {
 
 	@GetMapping("/")
 	public String index() {
-		val result = sampleEntropyService.calculateSampleEntropy(createDubArray(1000),5,0.2);
+		val result = sampleEntropyService.calculateSampleEntropy(createDubArray(1000000),5,0.2);
 
 		return "This will soon analyze things!";
 	}
