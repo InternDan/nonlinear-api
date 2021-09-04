@@ -1,6 +1,7 @@
 package com.springboot.service.sampleentropy;
 
 import Jama.Matrix;
+import lombok.extern.slf4j.Slf4j;
 import lombok.val;
 import org.springframework.stereotype.Service;
 import java.util.Arrays;
@@ -8,6 +9,7 @@ import java.util.Arrays;
 import static org.apache.commons.math3.stat.StatUtils.sum;
 
 @Service
+@Slf4j
 public class SampleEntropyService {
 
     String distType = "chebychev";
@@ -44,6 +46,9 @@ public class SampleEntropyService {
         val B = new double[M];
         val e = new double[M];
         for (int i = 0; i < n; i++){
+            if(i % 1000 == 0) {
+                log.info(String.valueOf(i));
+            }
             val nj = n-i;
             val y1 = signal[i];
             for (int jj = 0; jj < nj; jj++){
@@ -76,6 +81,7 @@ public class SampleEntropyService {
 
         val p = matrixA.arrayRightDivide(matrixB);
         val arr = p.getArray();
-        return arr[0];
+        val arrForNaturalLog = arr[0];
+        return Arrays.stream(arrForNaturalLog).map(a -> (-1 * Math.log(a))).toArray();
     }
 }

@@ -13,7 +13,7 @@ public class AnalysisController {
 
 	@GetMapping("/")
 	public String index() {
-		val result = sampleEntropyService.calculateSampleEntropy(createDubArray(1000000),5,0.2);
+		val result = sampleEntropyService.calculateSampleEntropy(createSamesiesArray(100000),5,0.2);
 
 		return "This will soon analyze things!";
 	}
@@ -22,6 +22,14 @@ public class AnalysisController {
 		val dub = new double[len];
 		for (int i = 0; i < len; i++){
 			dub[i] = Math.random() * 10;
+		}
+		return dub;
+	}
+
+	private double[] createSamesiesArray(int len){
+		val dub = new double[len];
+		for (int i = 0; i < len; i++){
+			dub[i] = 0.3;
 		}
 		return dub;
 	}
