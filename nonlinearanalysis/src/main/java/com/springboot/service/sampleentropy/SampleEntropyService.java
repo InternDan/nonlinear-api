@@ -44,11 +44,7 @@ public class SampleEntropyService {
         val run = new double[n];
         val A = new double[M];
         val B = new double[M];
-        val e = new double[M];
         for (int i = 0; i < n; i++){
-            if(i % 1000 == 0) {
-                log.info(String.valueOf(i));
-            }
             val nj = n-i;
             val y1 = signal[i];
             for (int jj = 0; jj < nj; jj++){
@@ -79,9 +75,7 @@ public class SampleEntropyService {
         Matrix matrixA = new Matrix(A,1);
         Matrix matrixB = new Matrix(newB,1);
 
-        val p = matrixA.arrayRightDivide(matrixB);
-        val arr = p.getArray();
-        val arrForNaturalLog = arr[0];
-        return Arrays.stream(arrForNaturalLog).map(a -> (-1 * Math.log(a))).toArray();
+        val e = matrixA.arrayRightDivide(matrixB).getArray()[0];
+        return Arrays.stream(e).map(a -> (-1 * Math.log(a))).toArray();
     }
 }
