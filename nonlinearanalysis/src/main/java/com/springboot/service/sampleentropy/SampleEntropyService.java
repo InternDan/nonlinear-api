@@ -8,11 +8,11 @@ import java.util.Arrays;
 
 import static org.apache.commons.math3.stat.StatUtils.sum;
 
-@Service
 @Slf4j
+@Service
 public class SampleEntropyService {
 
-    String distType = "chebychev";
+    //String distType = "chebychev";
 
     public double[] calculateSampleEntropy(double[] signal, int M, double r){
         validateInputs(signal,M,r);
